@@ -164,7 +164,6 @@ dtypes: float64(36), int64(9), object(13)
 def drop_redundant_feats(df):
    
     df = df.drop(REDUNDANT_FEATURES, axis=1)
-    print("DROP - succesfull")
     return df
 
 def replace_missing_cat(df):
@@ -175,7 +174,6 @@ def replace_missing_cat(df):
         df[col] = df[col].fillna("MISSING")
         df[col] = df[col].fillna("MISSING")
 
-    print("Imputing MISSED VALS - succesful")
     return df
 
 def compute_hand_crafted_feats(df):
@@ -192,7 +190,6 @@ def compute_hand_crafted_feats(df):
     df["CONSUMPTION_RATIO"] = df["AMT_GOODS_PRICE"] / (df["prev_AMT_GOODS_PRICE"] + 0.0001)
     df["WORKING_TIME_FRACTION"] = df["DAYS_EMPLOYED"] / (df["DAYS_BIRTH"] + 0.0001)
     
-    print("HANDCRAFTED - succesful")
     return df
 
 def compute_golden_feats(df):
@@ -214,7 +211,6 @@ def compute_golden_feats(df):
     # Difference Operation
     df['EXT_SOURCE_3_diff_FLAG_DOCUMENT_3'] = df['EXT_SOURCE_3'] - df['FLAG_DOCUMENT_3']
 
-    print("GOLDEN FEATS - succesful")
     return df
 
 def convert_education_type_to_ordinal(education_type):
@@ -281,6 +277,8 @@ def preprocess_df(df):
     if (len(df.columns) != 58):
             #drop redundant features    
             df = drop_redundant_feats(df)
+            if ("Unnamed: 0" in list(df.columns)):
+                df = df.drop("Unnamed: 0", axis=1)
     
     
 
