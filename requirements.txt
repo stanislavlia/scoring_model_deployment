@@ -1,0 +1,12 @@
+catboost==1.2.2
+uvicorn==0.23.2
+pandas==2.1.3
+fastapi==0.85.1
+numpy==1.23.1
+pydantic==1.10.2
+joblib==1.2.0
+scipy==1.9.3
+httptools==0.5.0
+gunicorn==20.1.0
+scikit-learn==1.1.3
+six==1.16.0
