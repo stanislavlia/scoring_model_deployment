@@ -4,8 +4,7 @@ from catboost import CatBoostClassifier
 
 
 
-test_data = pd.read_csv("prep_golden_test_data.csv").drop("Unnamed: 0", axis=1)
-
+test_data = pd.read_csv("../prep_golden_test_data.csv").drop("Unnamed: 0", axis=1)
 
 model = CatBoostClassifier()
 model.load_model("catboost_cred_scoring.cbm")
