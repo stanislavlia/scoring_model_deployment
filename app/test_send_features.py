@@ -24,14 +24,14 @@ def row_to_json(df, row_index):
 test_data = pd.read_csv("../prep_golden_test_data.csv").drop("Unnamed: 0", axis=1)
 
 # Convert a row to JSON
-json_data = row_to_json(test_data, 0)  # Assuming you want to send the first row
-
+json_data = row_to_json(test_data, 1)  # Assuming you want to send the first row
+json_data = row_to_json(test_data, 1)
 
 print("JSON TO SEND:\n", json_data)
 
 
 # The URL of your FastAPI application
-url = 'http://localhost:2080/prediction'
+url = 'http://localhost:81/prediction'
 
 # Send the POST request
 response = requests.post(url, json=json_data)

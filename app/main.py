@@ -8,6 +8,8 @@ from pydantic import BaseModel
 import xgboost
 import catboost
 from catboost import CatBoostClassifier
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 
 ## app
 app = FastAPI(
@@ -125,8 +127,16 @@ def inference(data : CreditScoringData):
 
     # Inference - Predictions
     pred = model.predict(features)
-    pred_prob = model.predict_proba(features)
+    pred_prob = model.predict_proba(features)[:, 1]
 
-    prob_default = np.round(pred_prob[0, 1]*100, 2)
 
-    return {f"Probability of default predicted by model =  {prob_default}% "}
+    #prob_default = pred_prob[0, 1]
+    print(pred_prob[:10])
+    print(list(features["SK_ID_CURR"].values))
+    predictions_d =  {
+        "predictions" : [float(p) for p in pred_prob],
+        "SK_IDS_CURR" : [int(id) for id in features["SK_ID_CURR"].values]
+    }
+
+    print(predictions_d)
+    return JSONResponse(content=predictions_d)
