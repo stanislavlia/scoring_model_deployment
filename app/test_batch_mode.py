@@ -23,11 +23,11 @@ def dataframe_to_json(df, batch_size):
 test_data = pd.read_csv("../prep_golden_test_data.csv").drop("Unnamed: 0", axis=1)
 
 # Define batch size
-batch_size = 128
+batch_size = 256
 
 # Convert the DataFrame to a single JSON object containing a list of records
 json_data = dataframe_to_json(test_data, batch_size)
-json.dump(json_data, open("../stress_test/batch128.json", "w"))
+json.dump(json_data, open("../stress_test/batch256.json", "w"))
 # Print the JSON data
 #print("JSON Data to Send:\n", json_data)
 

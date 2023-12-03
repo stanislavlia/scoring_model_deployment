@@ -233,7 +233,6 @@ def inference(data: BatchCreditScoringData):
     features = pd.DataFrame(data.dict())
 
     # Inference - Predictions
-    pred = model.predict(features)
     pred_prob = model.predict_proba(features)[:, 1]
 
     predictions_d = {
