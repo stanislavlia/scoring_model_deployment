@@ -11,10 +11,15 @@ from catboost import CatBoostClassifier
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from typing import List
+from prometheus_fastapi_instrumentator import Instrumentator
+
+
+
 
 ## app
 app = FastAPI(
 )
+Instrumentator().instrument(app).expose(app)
 
 # Path of the model
 BASE_DIR = Path(__file__).resolve(strict = True).parent
