@@ -2,7 +2,7 @@ version: '3'
 
 services:
   cred_scoring:
-    image: cred_scoring
+    image: stanislavlia/cred_scoring 
     ports:
       - "8081:80"
 
