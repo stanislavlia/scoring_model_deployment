@@ -1,0 +1,28 @@
+
+
+Run docker image of application:
+
+cmd: docker run -p 81:80 cred_scoring
+
+
+Install and extract prometheus, then go to extracted folder and replace the config prometheus.yml
+
+run prometheus:
+./prometheus --config.file=prometheus.yml
+
+then run ifconfig to find ip and copy and keep that ip of running prometheus
+
+
+Then run grafana for visualizations from public docker image:
+
+docker run -p 3000:3000 grafana/grafana 
+
+
+
+Open localhost:3000 and login using admin as password and login
+
+Add Prometheus as data source and paste that ip in prometheus url form.
+
+
+Create any dashboards you want
+
