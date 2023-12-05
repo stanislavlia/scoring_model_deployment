@@ -32,7 +32,7 @@ json.dump(json_data, open("../stress_test/batch1024.json", "w"))
 #print("JSON Data to Send:\n", json_data)
 
 # The URL of your FastAPI application
-url = 'http://localhost:81/prediction'
+url = 'http://localhost:8081/prediction'
 
 # Send the POST request
 response = requests.post(url, json=json_data)

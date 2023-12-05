@@ -13,4 +13,4 @@ COPY ./app  /app
 WORKDIR /app
 
 # 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+#CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"] - docker compose will do that

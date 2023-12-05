@@ -30,4 +30,4 @@ scrape_configs:
     metrics_path: /metrics
     # Define static targets for this job
     static_configs:
-      - targets: ['localhost:81']
+      - targets: ['localhost:8081']
