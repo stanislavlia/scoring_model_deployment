@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  app:
+  cred_scoring:
     image: cred_scoring
     ports:
       - "8081:80"
@@ -23,8 +23,4 @@ services:
       - "3000:3000"
     depends_on:
       - prometheus
-    volumes:
-      - grafana-data:/var/lib/grafana
-
-volumes:
-  grafana-data:
+  

@@ -1,11 +1,11 @@
 
 global:
   # Set the interval at which Prometheus scrapes targets (15 seconds)
-  scrape_interval: 15s
+  scrape_interval: 1s
   # Set the timeout for individual scrape requests (10 seconds)
-  scrape_timeout: 10s
+  scrape_timeout: 1s
   # Set the interval at which rules are evaluated (15 seconds)
-  evaluation_interval: 15s
+  evaluation_interval: 2s
 
 # Alerting configuration for Prometheus
 alerting:
@@ -14,7 +14,7 @@ alerting:
   - follow_redirects: true
     enable_http2: true
     scheme: http
-    timeout: 10s
+    timeout: 1s
     api_version: v2
     # Configure static targets for Alertmanager
     static_configs:
@@ -25,9 +25,9 @@ scrape_configs:
   # Job configuration for 'fastapi'
   - job_name: 'fastapi'
     # Set the interval at which Prometheus scrapes targets for this job (10 seconds)
-    scrape_interval: 10s
+    scrape_interval: 1s
     # Set the metrics path for this job
     metrics_path: /metrics
     # Define static targets for this job
     static_configs:
-      - targets: ['localhost:8081']
+      - targets: ['cred_scoring:80']
