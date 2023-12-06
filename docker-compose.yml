@@ -2,7 +2,7 @@ version: '3'
 
 services:
   cred_scoring:
-    image: stanislavlia/cred_scoring 
+    image: stanislavlia/cred_scoring
     ports:
       - "8081:80"
 
@@ -10,6 +10,7 @@ services:
     image: prom/prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus   # Persistent volume for Prometheus data
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
     ports:
@@ -23,4 +24,9 @@ services:
       - "3000:3000"
     depends_on:
       - prometheus
-  
+    volumes:
+      - grafana-data:/var/lib/grafana  # Persistent volume for Grafana data
+
+volumes:
+  prometheus-data:  # Define the volume for Prometheus
+  grafana-data:    # Define the volume for Grafana
