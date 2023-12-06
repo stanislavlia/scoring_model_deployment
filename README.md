@@ -37,3 +37,16 @@ See an example of JSON of features [here](stress_test/batch1.json) for batch of 
 
 See an example of JSON of features [here](stress_test/batch8.json) for batch of size 8.
 
+
+### Stress test
+In order to collect statistics using Apache Benchmark, go to the directory called stress_test and execute shell script.
+```bash
+./tesh.sh
+```
+This test will check how our sever works when batch_size=128 and when batch_size=1024.
+
+
+### Monitoring server using Grafa
+After you ran all 3 apps using docker-compose, you can open http://localhost:3000 and login.
+Use password = admin and login = admin. Once you logged in, you need to add our Prometheus server as first your data source.
+After that, you can build a dashboard for server monitoring.
